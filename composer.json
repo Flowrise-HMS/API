@@ -1,0 +1,23 @@
+{
+    "name": "modules/api",
+    "description": "FlowRise HMS API module — RESTful endpoints and Scribe documentation",
+    "type": "library",
+    "require": {
+        "knuckleswtf/scribe": "^5.0"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "Modules\\Api\\": "app/",
+            "Modules\\Api\\Database\\Factories\\": "database/factories/",
+            "Modules\\Api\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Api\\Providers\\ApiServiceProvider"
+            ]
+        }
+    }
+}

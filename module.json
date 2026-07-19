@@ -1,0 +1,21 @@
+{
+    "name": "Api",
+    "alias": "api",
+    "description": "Optional API module providing RESTful endpoints, token authentication, and Scribe-generated API documentation for mobile app integration and third-party access.",
+    "keywords": [
+        "api",
+        "rest",
+        "mobile",
+        "integration",
+        "documentation",
+        "scribe"
+    ],
+    "priority": 10,
+    "providers": [
+        "Modules\\Api\\Providers\\ApiServiceProvider"
+    ],
+    "files": [],
+    "requires": [
+        "Modules\\Core"
+    ]
+}
