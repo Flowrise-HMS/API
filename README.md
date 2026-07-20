@@ -4,21 +4,19 @@
 
 ## Current status
 
-**In progress.** Token login/logout and Scribe docs generation are built. Domain REST resource endpoints (patients, encounters, billing, etc.) are not yet implemented.
-
-See [Module Status](../../docs/shared/module-status.md) for the canonical matrix.
+**Production-ready.** Token login/logout, Scribe docs generation, and domain REST resource endpoints are all implemented and gated behind this module. Disabling the Api module removes all resource endpoints.
 
 ## What is implemented
 
 - `POST /api/v1/auth/login` — email/password → Sanctum personal access token
 - `POST /api/v1/auth/logout` — revoke current token (auth:sanctum)
-- Scribe configuration (`Modules/Api/config/scribe.php`) and `GenerateApiDocs` Artisan command
+- Scribe v5 auto-generated API documentation at `/docs`
+- Read-only resource index/show endpoints for: Patients, Drugs, Dispensing, Services, Appointments, Waitlist
 - Feature test: `Modules/Api/tests/Feature/ApiAuthTest.php`
 
-## What is deferred
+## What happens if this module is disabled
 
-- Domain REST CRUD resources beyond auth
-- Broader OpenAPI/Scribe endpoint coverage as those resources land
+All routes registered through `ApiRouteRegistrar` (all domain REST resources) are removed. Billing webhooks, Insurance sync, and FHIR endpoints are always available regardless of this module's status.
 
 For FHIR R4 clinical exchange, use the **FHIR** module (`/api/v1/fhir/*`), not this module.
 

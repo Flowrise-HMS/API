@@ -22,6 +22,22 @@ class ApiAuthController extends Controller implements HasMiddleware
     /**
      * @group Authentication
      *
+     * Revoke the current API token.
+     *
+     * @authenticated
+     *
+     * @response 200 { "success": true, "data": { "message": "Logged out successfully." } }
+     */
+    public function logout(Request $request): JsonResponse
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return ApiResponse::ok(['message' => 'Logged out successfully.']);
+    }
+
+    /**
+     * @group Authentication
+     *
      * Obtain an API token.
      *
      * @bodyParam email string required The user's email or username.

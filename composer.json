@@ -1,16 +1,23 @@
 {
-    "name": "modules/api",
+    "name": "flowrise-hms/api",
+    "type": "laravel-module",
     "description": "FlowRise HMS API module — RESTful endpoints and Scribe documentation",
-    "type": "library",
+    "license": "MIT",
     "require": {
+        "php": "^8.4",
+        "flowrise-hms/core": "dev-main",
         "knuckleswtf/scribe": "^5.0"
     },
-    "require-dev": {},
     "autoload": {
         "psr-4": {
             "Modules\\Api\\": "app/",
             "Modules\\Api\\Database\\Factories\\": "database/factories/",
             "Modules\\Api\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Api\\Tests\\": "tests/"
         }
     },
     "extra": {
@@ -19,5 +26,7 @@
                 "Modules\\Api\\Providers\\ApiServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
