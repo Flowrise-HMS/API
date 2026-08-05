@@ -4,19 +4,25 @@
 
 ## Current status
 
-**Production-ready.** Token login/logout, Scribe docs generation, and domain REST resource endpoints are all implemented and gated behind this module. Disabling the Api module removes all resource endpoints.
+**In progress.** Token login/logout and Scribe docs generation are implemented. Domain REST resource endpoints (patients, drugs, appointments, etc.) are **not** implemented yet.
+
+See [Module Status](../../docs/shared/module-status.md) for the canonical rollout matrix.
 
 ## What is implemented
 
 - `POST /api/v1/auth/login` — email/password → Sanctum personal access token
 - `POST /api/v1/auth/logout` — revoke current token (auth:sanctum)
-- Scribe v5 auto-generated API documentation at `/docs`
-- Read-only resource index/show endpoints for: Patients, Drugs, Dispensing, Services, Appointments, Waitlist
+- Scribe documentation tooling (`GenerateApiDocs` command + module Scribe config)
 - Feature test: `Modules/Api/tests/Feature/ApiAuthTest.php`
+
+## What is deferred
+
+- Domain REST index/show (or CRUD) endpoints for Patients, Drugs, Dispensing, Services, Appointments, Waitlist, and other operational resources
+- Broader Scribe coverage once those endpoints exist
 
 ## What happens if this module is disabled
 
-All routes registered through `ApiRouteRegistrar` (all domain REST resources) are removed. Billing webhooks, Insurance sync, and FHIR endpoints are always available regardless of this module's status.
+Auth routes registered from `Modules/Api/routes/api.php` are removed. Billing webhooks, Insurance sync, and FHIR endpoints remain available from their own modules regardless of this module's status.
 
 For FHIR R4 clinical exchange, use the **FHIR** module (`/api/v1/fhir/*`), not this module.
 
@@ -29,5 +35,5 @@ For FHIR R4 clinical exchange, use the **FHIR** module (`/api/v1/fhir/*`), not t
 
 - **Namespace:** `Modules\Api\...`
 - **Service provider:** `Modules\Api\Providers\ApiServiceProvider`
-- **Routes:** `Modules/Api/routes/api.php`
+- **Routes:** `Modules/Api/routes/api.php` (auth only today)
 - **Docs:** [API Reference](../../docs/developer-guide/api-reference.md)

@@ -1,7 +1,7 @@
 {
     "name": "Api",
     "alias": "api",
-    "description": "Optional API module providing RESTful endpoints, token authentication, and Scribe-generated API documentation for mobile app integration and third-party access.",
+    "description": "Optional API module providing Sanctum token authentication (login/logout) and Scribe documentation tooling. Domain REST resource endpoints beyond auth are not yet implemented; FHIR exchange lives in the FHIR module.",
     "keywords": [
         "api",
         "rest",
