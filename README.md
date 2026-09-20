@@ -20,7 +20,7 @@ See [Module Status](../../docs/shared/module-status.md) for the canonical rollou
 ## What is deferred
 
 - REST endpoints for encounters, invoices, inventory and other operational resources
-- Scribe coverage of the domain endpoints (the module's `config/scribe.php` is merged as `config('api.scribe')`, so Scribe currently runs with package defaults)
+- Scribe coverage of the domain endpoints (the module's `config/scribe.php` is overlaid on `config('scribe')` by `ApiServiceProvider::register()`, so the title, `api/v1/*` route match and auth settings apply; endpoint annotations are still incomplete)
 
 ## What happens if this module is disabled
 
